@@ -12,7 +12,6 @@ if (app.Environment.IsDevelopment())
 }
 
 
-
 app.MapPost("/bookEvent", (BookingRequest request) =>
 {
     return ($"book {request.EventId} seat {request.SeatNumber}, for customer {request.CustomerId}");
