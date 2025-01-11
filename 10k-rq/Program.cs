@@ -11,12 +11,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-app.MapPost("/bookEvent", (BookingRequest request) =>
+List<BookingRequest> requests = new List<BookingRequest>();
+app.MapPost("/bookEvents", (BookingRequest request) =>
 {
-    return ($"book {request.EventId} seat {request.SeatNumber}, for customer {request.CustomerId}");
+    requests.Add(request);
+    return ($"booking request has been pleaced : event:  {request.EventId} seat {request.SeatNumber}, for customer {request.CustomerId}");
 }).WithName("BookEvent")
 .WithOpenApi();
+
+app.MapGet("/bookEvents", () =>
+{
+    return requests;
+});
 
 app.Run();
 
