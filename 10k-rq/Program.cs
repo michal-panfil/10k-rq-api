@@ -26,4 +26,4 @@ app.MapGet("/bookEvents", () =>
 
 app.Run();
 
-internal record BookingRequest(int SeatNumber, int EventId, int CustomerId);
+internal record struct BookingRequest(int SeatNumber, int EventId, int CustomerId);
