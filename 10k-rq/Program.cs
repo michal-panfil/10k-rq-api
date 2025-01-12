@@ -24,6 +24,11 @@ app.MapGet("/bookEvents", () =>
     return requests;
 });
 
+app.MapGet("/bookEventsCount", () =>
+{
+    return requests.Count;
+});
+
 app.Run();
 
 internal record struct BookingRequest(int SeatNumber, int EventId, int CustomerId);
