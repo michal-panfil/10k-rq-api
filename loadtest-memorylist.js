@@ -12,5 +12,5 @@ export default function () {
     customerId: 3
   });
   const headers = { 'Content-Type': 'application/json' };
-  http.post('http://localhost:5200/bookEvents', payload, { headers });
+  http.post('http://localhost:5200/bookEventsMemoryList', payload, { headers });
 }

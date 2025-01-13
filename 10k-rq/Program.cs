@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -12,21 +14,30 @@ if (app.Environment.IsDevelopment())
 }
 
 List<BookingRequest> requests = new List<BookingRequest>();
-app.MapPost("/bookEvents", (BookingRequest request) =>
+ConcurrentBag<BookingRequest> requestsBag = new ConcurrentBag<BookingRequest>();
+
+app.MapPost("/bookEventsMemoryList", (BookingRequest request) =>
 {
     requests.Add(request);
     return ($"booking request has been pleaced : event:  {request.EventId} seat {request.SeatNumber}, for customer {request.CustomerId}");
-}).WithName("BookEvent")
+}).WithName("BookEventMemoryList")
 .WithOpenApi();
 
-app.MapGet("/bookEvents", () =>
+app.MapPost("/bookEventsMemoryBag", (BookingRequest request) =>
 {
-    return requests;
-});
+    requestsBag.Add(request);
+    return ($"booking request has been pleaced : event:  {request.EventId} seat {request.SeatNumber}, for customer {request.CustomerId}");
+}).WithName("BookEventMemoryBag")
+.WithOpenApi();
 
-app.MapGet("/bookEventsCount", () =>
+app.MapGet("/bookEventsMemoryListCount", () =>
 {
     return requests.Count;
+});
+
+app.MapGet("/bookEventsMemoryBagCount", () =>
+{
+    return requestsBag.Count;
 });
 
 app.Run();
