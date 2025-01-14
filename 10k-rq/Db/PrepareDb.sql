@@ -8,3 +8,10 @@ CREATE TABLE SiteEvents (
     Venue VARCHAR(255) NOT NULL,       
     Date DATETIME NOT NULL             
 );
+
+CREATE TABLE  BookingRequest(
+    Id INT NOT NULL PRIMARY KEY, 
+    SeatNumber INT NOT NULL,
+    EventId INT NOT NULL,
+    CustomerId INT NOT NULL
+)
