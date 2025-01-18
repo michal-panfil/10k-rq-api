@@ -21,7 +21,8 @@ CREATE TABLE  BookingRequest(
     SeatNumber INT NOT NULL,
     EventId INT NOT NULL,
     CustomerId INT NOT NULL,
-    FOREIGN KEY (EventId) REFERENCES SiteEvents(Id)
+    FOREIGN KEY (EventId) REFERENCES SiteEvents(Id),
+    CONSTRAINT unique_eventid_seatnumber UNIQUE (EventId, SeatNumber)
 )
 
 INSERT INTO  Venue (Name, SeatsCount)
