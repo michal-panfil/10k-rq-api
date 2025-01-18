@@ -7,8 +7,8 @@
 ## k6 result:
 -vus 200
 
-|               |memory list|   |   |   |
-|---------------|-----------|---|---|---|
-| iterations/s  |   72833   |   |   |   |
-| avg duration  |  2.67ms   |   |   |   |
-| p(95)         |   5ms     |   |   |   |
+|               |memory list| db simple  |   |   |
+|---------------|-----------|------------|---|---|
+| iterations/s  |   72833   |    12887   |   |   |
+| avg duration  |  2.67ms   |   15.5ms   |   |   |
+| p(95)         |   5ms     |   17.75ms  |   |   |
