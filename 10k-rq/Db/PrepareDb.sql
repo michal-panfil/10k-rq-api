@@ -31,7 +31,7 @@ BEGIN
             Name VARCHAR(255) NOT NULL,        
             VenueId INT NOT NULL,       
             EventStartDate DATE NOT NULL,   
-            FOREIGN KEY (VenueId) REFERENCES Venue(Id);
+            FOREIGN KEY (VenueId) REFERENCES Venue(Id)
             );
 
             RAISE NOTICE 'Table SiteEvents created.';
